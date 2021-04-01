@@ -75,7 +75,8 @@ html_to_tokens = function (html) {
           }
           current_word = char;
           mode = "whitespace";
-        } else if (/[\w\#@]+/i.test(char)) {
+        } else if (/[\w#@]+/i.test(char)) {
+        // } else if (/[\w\#@]+/i.test(char)) {
           current_word += char;
         } else {
           if (current_word) {
@@ -473,11 +474,15 @@ find_matching_blocks.find_match = find_match;
 find_matching_blocks.create_index = create_index;
 diff.calculate_operations = calculate_operations;
 diff.render_operations = render_operations;
-if (typeof define === "function") {
-  define([], function () {
-    return diff;
-  });
-} else if (typeof module !== "undefined" && module !== null) {
+
+console.log('typeof define: ', typeof define)
+
+// if (typeof define === "function") {
+//   define([], function () {
+//     return diff;
+//   });
+// } else 
+if (typeof module !== "undefined" && module !== null) {
   module.exports = diff;
 } else {
   this.htmldiff = diff;
